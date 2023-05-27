@@ -8,6 +8,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import Swal from 'sweetalert2'
+import { TextField } from '@mui/material';
 const System = () => {
     const [investigators, setInvestigators] = useState([])
     useEffect(() => {
@@ -16,6 +17,13 @@ const System = () => {
             console.log(res.data)
         })
     },[])
+
+    function handleChange(e){
+        getAllInvestigators(e.target.value).then((res)=>{
+            setInvestigators(res.data)
+            console.log(res.data)
+        })
+    }
     return (
         <>
             <section>
@@ -23,6 +31,8 @@ const System = () => {
 salam
                 </article>
 
+                <TextField onChange={(e)=>handleChange(e)} placeholder='search'/>
+                
                 <Grid container spacing={2}>
                     {investigators && investigators.map((investigator) => {
                         return(

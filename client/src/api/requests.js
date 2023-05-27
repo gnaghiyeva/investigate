@@ -7,10 +7,10 @@ export const getAllInvestigators = async(title)=>{
     let globalData
 
     if(!title){
-        URL = BASE_URL+ '/investigators'
+        URL = BASE_URL+ "/investigators"
     }
     else{
-        URL = BASE_URL + '/investigators/'+`?title=${title}`
+        URL = BASE_URL + "/investigators/"+`?title=${title}`
     }
 
     await axios.get(URL).then((res)=>{

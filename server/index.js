@@ -39,9 +39,9 @@ app.post("/api/investigators", async(req,res)=>{
 })
 
 app.get("/api/investigators", async(req,res)=>{
-    const {name} = req.query
+    const {title} = req.query
     const allInvestigators = await investigationModel.find()
-    if(name==undefined){
+    if(title===undefined){
         res.status(200).send({
             data:allInvestigators,
             message:'data get succesfully'
@@ -49,15 +49,15 @@ app.get("/api/investigators", async(req,res)=>{
     }
     else{
         res.status(200).send({
-            data:allInvestigators.filter((x)=>x.title.toLowerCase().trim().includes(title.toLowerCase().trim())),
+            data: allInvestigators.filter((x)=>x.title.toLowerCase().trim().includes(title.toLowerCase().trim())),
             message:'data get succesfully'
         })
     }
 })
 
-app.get("/api/investigators/:id", async(req,res)=>{
-    const {id} = req.params
-    await investigationModel.findById(id).then((investigator)=>{
+app.get("/api/investigators/:id", (req,res)=>{
+    const id = req.params.id
+   investigationModel.findById(id).then((investigator)=>{
         res.status(200).send({
             data:investigator,
             message:'data get succesfully'

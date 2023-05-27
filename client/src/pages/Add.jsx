@@ -11,8 +11,6 @@ import { postInvestigator } from '../api/requests';
 const Add = () => {
   const navigate = useNavigate()
   const handleSubmit = async(values,actions)=>{
-    console.log('values',values)
-    console.log('actons', actions)
     await postInvestigator(values)
     actions.resetForm()
     navigate('/')
@@ -29,6 +27,8 @@ const Add = () => {
        onSubmit:handleSubmit
   })
   return (
+    <>
+    
     <form onSubmit={formik.handleSubmit}>
       <TextField type='text' onChange={formik.handleChange} onBlur={formik.handleBlur} name='imageURL' value={formik.values.imageURL} id="outlined-basic" label="image" variant="outlined" />
       {formik.errors.imageURL && formik.touched.imageURL && (<span>{formik.errors.imageURL}</span>)}
@@ -41,6 +41,7 @@ const Add = () => {
      
       <Button variant='contained' type='submit'>Add</Button>
     </form>
+    </>
   )
 }
 
