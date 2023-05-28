@@ -9,6 +9,9 @@ import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import Swal from 'sweetalert2'
 import { TextField } from '@mui/material';
+import {Link} from 'react-router-dom'
+import systemStyle from "../styles/system.module.css"
+
 const System = () => {
     const [investigators, setInvestigators] = useState([])
     useEffect(() => {
@@ -24,15 +27,25 @@ const System = () => {
             console.log(res.data)
         })
     }
+    
     return (
         <>
-            <section>
-                <article>
-salam
+            <section style={{width:'80%', margin:'60px auto'}}>
+
+                
+                <article className={systemStyle.system_texts}>
+               <p>TAKE A LOOK AT OUR</p>
+               <h1>A simple trading system</h1>
                 </article>
 
+                <div style={{display:'flex',justifyContent:'center', marginBottom:'40px'}}>
                 <TextField onChange={(e)=>handleChange(e)} placeholder='search'/>
-                
+                <Button onClick={()=>{
+                    let sortedPrices = [...investigators.sort((a,b)=>a.price-b.price)]
+                    setInvestigators(sortedPrices)
+                }} variant='contained' color='success'>Sort By Price</Button>
+                </div>
+
                 <Grid container spacing={2}>
                     {investigators && investigators.map((investigator) => {
                         return(
@@ -45,7 +58,7 @@ salam
                                 />
                                 <CardContent>
                                     <Typography gutterBottom variant="h5" component="div">
-                                        {investigator.title}
+                                       <Link to={`/${investigator._id}`}>{investigator.title}</Link> 
                                     </Typography>
                                     <Typography variant="body2" color="text.secondary">
                                        {investigator.desc}
@@ -53,7 +66,7 @@ salam
                                 </CardContent>
                                 <CardActions>
                                     <Button size="small">Price:{investigator.price}</Button>
-                                    <Button size="small">Edit</Button>
+                                    <Button size="small"><Link to={`/edit/${investigator._id}`}>Edit</Link></Button>
                                     <Button size="small" onClick={()=>{
                                         Swal.fire({
                                             title: 'Are you sure?',

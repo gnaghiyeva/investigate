@@ -1,5 +1,7 @@
 import Add from "../pages/Add";
-import { Edit } from "../pages/Edit";
+import Detail from "../pages/Detail";
+import Edit from "../pages/Edit";
+
 import Home from "../pages/Home";
 import MainRoot from "../pages/MainRoot";
 
@@ -11,6 +13,10 @@ export const ROUTES = [
             {
                 path:'/',
                 element:<Home/>
+            },
+            {
+                path:'/:id',
+                element:<Detail/>
             },
             {
                 path:'/add',

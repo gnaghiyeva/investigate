@@ -1,0 +1,18 @@
+.hero{
+    background-image: url("https://preview.colorlib.com/theme/invest/images/home_slider_1.jpg.webp");
+    background-position: center;
+    padding: 15%;
+}
+
+.hero_texts{
+    width: 70%;
+   
+    text-align: center;
+    color: white;
+    border: 1px solid;
+    background-color: #2222227e;
+    padding: 80px 0;
+    margin: 0 auto;
+    vertical-align: center;
+   
+}

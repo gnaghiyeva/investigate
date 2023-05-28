@@ -3,8 +3,32 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import {Link} from 'react-router-dom'
+import navStyle from "./navbar.module.css"
 const Navbarr = () => {
   return (
+    <>
+    <div className={navStyle.navbar}>
+    <Navbar style={{backgroundColor:'white'}}>
+    <Container>
+      <Navbar.Brand href="#home">INVEST</Navbar.Brand>
+      <Navbar.Toggle />
+      <Navbar.Collapse className="justify-content-end">
+      <Navbar.Text style={{marginRight:'20px'}}>
+         <span>BTC $10200</span>
+        </Navbar.Text>
+       
+        <Navbar.Text style={{marginRight:'20px'}}>
+         <span> ETH $979 </span>
+        </Navbar.Text>
+        <Navbar.Text style={{marginRight:'20px'}}>
+         <span> LTC $230</span>
+        </Navbar.Text>
+        <Navbar.Text>
+          <a href="#login">Register | Login</a>
+        </Navbar.Text>
+      </Navbar.Collapse>
+    </Container>
+  </Navbar>
     <Navbar  variant="dark" style={{backgroundColor:'rgb(255,168,0)'}}>
     <Container>
       <Navbar.Brand href="#home">Navbar</Navbar.Brand>
@@ -16,6 +40,8 @@ const Navbarr = () => {
       </Nav>
     </Container>
   </Navbar>
+  </div>
+  </>
   )
 }
 
